@@ -1,7 +1,13 @@
 <template lang="pug">
   .wrapper
     h1 todo list
+<<<<<<< HEAD
     todo-form(@addTodo="addTodo")
+=======
+    header
+      input(v-model="msg" type="text")
+      button(@click="addTodo" :disabled="disabled") 登録
+>>>>>>> origin/master
 
     ul
       todo-list-item(v-for="(item, index) in items" :key="item.id" :todoItem="item" :itemIndex="index" @removeTodoItem="removeTodo")
