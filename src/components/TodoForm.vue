@@ -14,7 +14,6 @@ export default {
     return {
       msg: '',
       disabled: false,
-
     }
   },
   watch: {
