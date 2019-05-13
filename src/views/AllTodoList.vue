@@ -10,6 +10,8 @@
 <script>
 import todoListItem from '@/components/TodoListItem.vue'
 import todoForm from '@/components/TodoForm.vue'
+import { mapState } from 'vuex'
+import * as types from '@/mutation-types'
 
 export default {
   name: 'allTodoList',
@@ -17,35 +19,17 @@ export default {
     todoForm,
     todoListItem
   },
-  data() {
-    return {
-      items: [
-        {
-          id: 1,
-          message: '牛乳を買う',
-          complete: true
-        },
-        {
-          id: 2,
-          message: '飛行機予約',
-          complete: false
-        }
-      ]
-    }
+  computed: {
+    ...mapState({
+      items: state => state.items
+    })
   },
   methods: {
     addTodo(message) {
-      const nextId = this.items.length ? this.items.slice(-1)[0].id + 1 : 1
-      const todo = {
-        id: nextId,
-        message,
-        complete: false
-      }
-
-      this.items.push(todo);
+      this.$store.commit(types.ADD_TODO, message)
     },
     removeTodo(index) {
-      this.items.splice(index, 1)
+      this.$store.commit(types.REMOEVE_TODO, index)
     }
   }
 }
