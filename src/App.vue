@@ -1,7 +1,15 @@
-<template>
-  <div id="app">
-    <router-view />
-  </div>
+<template lang="pug">
+  #app
+    nav
+      ul
+        li
+          router-link(to="/")
+            |all
+        li
+          router-link(to="/complete")
+            |complete
+
+    router-view
 </template>
 
 <style lang="scss">

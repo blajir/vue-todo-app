@@ -19,6 +19,11 @@ export default new Vuex.Store({
       }
     ]
   },
+  getters: {
+    completeTodoItems: state => {
+      return state.items.filter(item => item.complete)
+    }
+  },
   mutations: {
     [types.ADD_TODO](state, message) {
       const id = state.items.length ? state.items.slice(-1)[0].id + 1 : 1

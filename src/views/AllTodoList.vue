@@ -1,10 +1,17 @@
 <template lang="pug">
   .wrapper
-    h1 todo list
+    h1
+      |todo list
     todo-form(@addTodo="addTodo")
 
     ul
-      todo-list-item(v-for="(item, index) in items" :key="item.id" :todoItem="item" :itemIndex="index" @removeTodoItem="removeTodo")
+      todo-list-item(
+        v-for="(item, index) in items"
+        :key="item.id"
+        :todoItem="item"
+        :itemIndex="index"
+        @removeTodoItem="removeTodo"
+      )
 </template>
 
 <script>
@@ -14,7 +21,6 @@ import { mapState } from 'vuex'
 import * as types from '@/mutation-types'
 
 export default {
-  name: 'allTodoList',
   components: {
     todoForm,
     todoListItem
