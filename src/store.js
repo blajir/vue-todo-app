@@ -35,6 +35,11 @@ export default new Vuex.Store({
 
       state.items.push(todo)
     },
+    [types.UPDATE_TODO](state, payload) {
+      const idx = payload.index
+      const msg = payload.message
+      state.items[idx].message = msg
+    },
     [types.REMOEVE_TODO](state, index) {
       state.items.splice(index, 1)
     }

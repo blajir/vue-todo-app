@@ -1,7 +1,11 @@
 <template lang="pug">
   li
     input(v-model="todoItem.complete" type="checkbox")
-    span :{{ todoItem.message }}
+    span(
+        "contenteditable"
+        @blur="updateItem($event, itemIndex)"
+      )
+      |{{ todoItem.message }}
     button(@click="removeTodoItem(itemIndex)") 削除
 </template>
 
@@ -20,6 +24,9 @@ export default {
   methods: {
     removeTodoItem(index) {
       this.$emit('removeTodoItem', index)
+    },
+    updateItem(event, index) {
+      this.$emit('updateTodoItem', event.target.innerHTML, index)
     }
   }
 }

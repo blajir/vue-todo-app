@@ -11,6 +11,7 @@
         :todoItem="item"
         :itemIndex="index"
         @removeTodoItem="removeTodo"
+        @updateTodoItem="updateTodo"
       )
 </template>
 
@@ -33,6 +34,9 @@ export default {
   methods: {
     addTodo(message) {
       this.$store.commit(types.ADD_TODO, message)
+    },
+    updateTodo(message, index) {
+      this.$store.commit(types.UPDATE_TODO, {message, index})
     },
     removeTodo(index) {
       this.$store.commit(types.REMOEVE_TODO, index)
