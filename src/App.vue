@@ -1,16 +1,22 @@
 <template lang="pug">
   #app
-    nav
-      ul
-        li
-          router-link(to="/")
-            |all
-        li
-          router-link(to="/complete")
-            |complete
+    todo-navigation
 
     router-view
 </template>
+
+<script>
+import TodoNavigation from '@/components/Navigation'
+
+const components = {
+  TodoNavigation
+}
+
+export default {
+  components
+}
+</script>
+
 
 <style lang="scss">
 #app {
